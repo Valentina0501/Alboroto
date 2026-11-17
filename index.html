@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14041f">
+<meta name="description" content="Diagnóstico exprés de marca de ALBOROTO: 8 preguntas para saber qué necesita tu marca y cuánto cuesta.">
+<title>ALBOROTO · Diagnóstico exprés de marca</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --fucsia:#ff1f8f; --fucsia-claro:#ff6ab8; --fucsia-sombra:#a3005a;
+    --purpura:#7b2cbf; --noche:#14041f;
+    --texto:#fff4fb; --suave:#d9c2ec; --borde:rgba(255,255,255,.14);
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--noche);
+    background-image:
+      radial-gradient(circle at 10% -10%,rgba(255,31,143,.45),transparent 45%),
+      radial-gradient(circle at 110% 35%,rgba(123,44,191,.55),transparent 50%);
+    background-attachment:fixed;
+    color:var(--texto); min-height:100vh; display:flex; flex-direction:column; line-height:1.45;
+  }
+  [hidden]{display:none!important}
+
+  /* Encabezado */
+  .top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;max-width:560px;width:100%;margin:0 auto}
+  .logo{font-weight:900;font-size:1.4rem;letter-spacing:-.04em;font-style:italic}
+  .logo span{color:var(--fucsia);font-style:normal}
+  .chip{font-size:.72rem;border:1px solid var(--borde);padding:5px 10px;border-radius:99px;color:var(--suave);white-space:nowrap}
+
+  main{flex:1;width:100%;max-width:560px;margin:0 auto;padding:8px 20px 36px}
+  .pantalla{animation:entra .35s ease}
+  @keyframes entra{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+  /* Tipografía */
+  .eyebrow{display:inline-block;background:var(--fucsia);color:#fff;font-weight:800;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:6px 12px;border-radius:6px;transform:rotate(-2deg);margin:12px 0 18px}
+  h1{font-size:clamp(2.1rem,9vw,3rem);line-height:1.02;font-weight:900;letter-spacing:-.035em;margin-bottom:14px}
+  h1 em{font-style:normal;color:var(--fucsia)}
+  h2{font-size:1.55rem;line-height:1.15;font-weight:900;letter-spacing:-.02em;margin-bottom:6px}
+  h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--fucsia-claro);margin:28px 0 12px}
+  .lead{color:var(--suave);font-size:1.05rem;margin-bottom:22px}
+  .slogan{margin-top:28px;text-align:center;font-weight:900;font-style:italic;color:var(--fucsia-claro);font-size:1.05rem}
+
+  /* Formulario */
+  label{display:block;font-weight:700;margin-bottom:8px}
+  label small{font-weight:400;color:var(--suave)}
+  input[type=text]{width:100%;padding:14px 16px;border-radius:14px;border:2px solid var(--borde);background:rgba(255,255,255,.06);color:var(--texto);font-size:1rem;font-family:inherit;margin-bottom:16px}
+  input[type=text]::placeholder{color:rgba(217,194,236,.6)}
+  input[type=text]:focus{outline:none;border-color:var(--fucsia)}
+
+  /* Botones */
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 20px;border:0;border-radius:16px;background:var(--fucsia);color:#fff;font-weight:900;font-size:1.05rem;font-family:inherit;cursor:pointer;box-shadow:0 6px 0 var(--fucsia-sombra);transition:transform .1s,box-shadow .1s;text-decoration:none;text-align:center}
+  .btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--fucsia-sombra)}
+  .btn-wa{background:#25d366;color:#05301a;box-shadow:0 6px 0 #138a48}
+  .btn-wa:active{box-shadow:0 2px 0 #138a48}
+  .btn-wa.apagado{opacity:.4;pointer-events:none}
+  .btn-sec{background:transparent;border:2px solid var(--borde);box-shadow:none;color:var(--texto)}
+  .btn-sec:active{box-shadow:none}
+  .btn-link{margin-top:18px;background:none;border:0;color:var(--suave);font-size:.95rem;font-family:inherit;cursor:pointer;padding:8px 0}
+  .btn:focus-visible,.opcion:focus-visible,.btn-link:focus-visible,.item:focus-within{outline:3px solid #fff;outline-offset:3px}
+
+  /* Servicios en la portada */
+  .servicios{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:30px}
+  .servicio{border:1px solid var(--borde);border-radius:14px;padding:12px;background:rgba(255,255,255,.04)}
+  .servicio .emo{font-size:1.3rem}
+  .servicio p{font-size:.85rem;font-weight:700;line-height:1.2;margin:4px 0}
+  .servicio span{font-size:.8rem;color:var(--fucsia-claro);font-weight:800}
+
+  /* Cuestionario */
+  .progreso{display:flex;align-items:center;gap:12px;margin:8px 0 24px}
+  .barra{flex:1;height:10px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+  .barra span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purpura),var(--fucsia));transition:width .3s ease}
+  #contador{font-weight:800;font-size:.85rem;color:var(--suave);min-width:36px;text-align:right}
+  .ayuda{color:var(--suave);margin-bottom:18px;font-size:.95rem}
+  .opciones{display:grid;gap:12px}
+  .opcion{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:15px 16px;border-radius:16px;border:2px solid var(--borde);background:rgba(255,255,255,.05);color:var(--texto);font-size:1rem;font-family:inherit;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+  .opcion:hover{border-color:var(--fucsia-claro)}
+  .opcion:active{transform:scale(.98)}
+  .opcion b{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--purpura);font-weight:900}
+  .opcion.elegida{border-color:var(--fucsia);background:rgba(255,31,143,.18)}
+  .opcion.elegida b{background:var(--fucsia)}
+
+  /* Resultado */
+  .veredicto{background:linear-gradient(135deg,var(--fucsia),var(--purpura));border-radius:22px;padding:22px;margin:6px 0 4px;box-shadow:0 14px 40px rgba(255,31,143,.3)}
+  .veredicto small{display:block;text-transform:uppercase;letter-spacing:.1em;font-weight:800;font-size:.72rem;opacity:.9;margin-bottom:6px}
+  .veredicto h1{font-size:clamp(1.9rem,8vw,2.5rem);margin-bottom:8px}
+  .veredicto .necesita{font-weight:800;font-size:1.05rem;margin-bottom:8px}
+  .veredicto p{font-size:.98rem}
+  .medidor{display:grid;gap:12px}
+  .fila-medidor div:first-child{display:flex;justify-content:space-between;font-size:.92rem;font-weight:700;margin-bottom:5px}
+  .fila-medidor .barra{height:8px}
+  .cotizacion{display:grid;gap:10px}
+  .item{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid var(--borde);border-radius:14px;cursor:pointer;background:rgba(255,255,255,.04);transition:border-color .15s,background .15s}
+  .item.activo{border-color:var(--fucsia);background:rgba(255,31,143,.12)}
+  .item input{width:22px;height:22px;accent-color:var(--fucsia);flex:none}
+  .item .nombre{flex:1;font-weight:700;line-height:1.25}
+  .item .precio{font-weight:800;white-space:nowrap}
+  .tag{display:inline-block;margin-top:4px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:var(--fucsia);color:#fff;padding:2px 7px;border-radius:5px}
+  .total{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:18px;border-radius:16px;background:rgba(255,255,255,.08);margin-top:14px}
+  .total span{font-weight:700}
+  .total strong{font-size:1.6rem;font-weight:900;color:var(--fucsia-claro)}
+  .alerta{margin-top:12px;border-left:4px solid #ffd23f;background:rgba(255,210,63,.1);padding:12px 14px;border-radius:10px;font-size:.9rem}
+  .nota{margin-top:12px;font-size:.82rem;color:var(--suave)}
+  .acciones{display:grid;gap:14px;margin-top:24px}
+
+  footer{text-align:center;padding:22px 20px 28px;font-size:.8rem;color:var(--suave);border-top:1px solid var(--borde)}
+
+  @media (min-width:720px){ main{padding-top:24px} }
+  @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="logo">ALBOROTO<span>✦</span></div>
+  <span class="chip">Agencia creativa · Barranca</span>
+</header>
+
+<main>
+  <!-- PANTALLA 1: INICIO -->
+  <section id="inicio" class="pantalla">
+    <span class="eyebrow">Diagnóstico exprés de marca</span>
+    <h1>¿Tu marca está haciendo <em>ruido</em>… o pasando de agache?</h1>
+    <p class="lead">8 preguntas, 2 minutos. Te decimos qué necesita tu marca y cuánto te cuesta. Sin rodeos.</p>
+
+    <label for="negocio">¿Cómo se llama tu negocio? <small>(opcional)</small></label>
+    <input type="text" id="negocio" maxlength="60" autocomplete="off" placeholder="Ej: La Esquina del Sabor">
+
+    <button class="btn" id="btnEmpezar" type="button">Arrancar el diagnóstico →</button>
+
+    <div class="servicios" id="listaServicios"></div>
+    <p class="slogan">Si no causa alboroto, no es ALBOROTO.</p>
+  </section>
+
+  <!-- PANTALLA 2: PREGUNTAS -->
+  <section id="quiz" class="pantalla" hidden>
+    <div class="progreso">
+      <div class="barra"><span id="barra"></span></div>
+      <span id="contador">1/8</span>
+    </div>
+    <h2 id="pregunta" tabindex="-1"></h2>
+    <p class="ayuda" id="ayuda"></p>
+    <div class="opciones" id="opciones" role="group" aria-labelledby="pregunta"></div>
+    <button class="btn-link" id="btnAtras" type="button">← Atrás</button>
+  </section>
+
+  <!-- PANTALLA 3: RESULTADO -->
+  <section id="resultado" class="pantalla" hidden>
+    <div class="veredicto">
+      <small id="resSaludo">Tu diagnóstico</small>
+      <h1 id="resVeredicto" tabindex="-1"></h1>
+      <p class="necesita" id="resNecesita"></p>
+      <p id="resPitch"></p>
+    </div>
+
+    <h3>Nivel de urgencia por servicio</h3>
+    <div class="medidor" id="medidor"></div>
+
+    <h3>Tu cotización</h3>
+    <p class="ayuda">Dejamos marcado lo que te recomendamos según tu presupuesto. Quita o agrega lo que quieras.</p>
+    <div class="cotizacion" id="cotizacion"></div>
+
+    <div class="total"><span>Inversión total</span><strong id="total">$ 0</strong></div>
+    <div class="alerta" id="alerta" hidden>Ojo: esto se pasa de tu presupuesto. Tranqui, por WhatsApp armamos un plan por fases.</div>
+    <p class="nota">Precios de referencia. La propuesta final se confirma por WhatsApp.</p>
+
+    <div class="acciones">
+      <a class="btn btn-wa" id="btnWA" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+      <button class="btn btn-sec" id="btnReiniciar" type="button">Hacer el diagnóstico otra vez</button>
+    </div>
+  </section>
+</main>
+
+<footer>Proyecto académico · Creación de Empresas · UNIPAZ 2026</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ===== CONFIGURACIÓN ===== */
+  // Número de WhatsApp en formato internacional, sin "+", espacios ni guiones. Ej: "573001234567".
+  // Si lo dejas vacío, WhatsApp se abre para que el cliente escoja a quién enviar.
+  var NUMERO_WHATSAPP = "";
+
+  var SERVICIOS = {
+    redes: {
+      nombre: "Gestión de redes sociales", precio: 1500000, emoji: "📱",
+      veredicto: "Marca fantasma 👻",
+      pitch: "Tienes con qué, pero tus redes están más quietas que el Malecón a mediodía. Necesitas constancia, estrategia y contenido que conecte con la gente."
+    },
+    audiovisual: {
+      nombre: "Producción audiovisual", precio: 850000, emoji: "🎬",
+      veredicto: "Marca borrosa 📸",
+      pitch: "La intención es buena, pero tu marca se ve como foto de celular de 2015. Te hacen falta video y foto que frenen el scroll."
+    },
+    campanas: {
+      nombre: "Campañas publicitarias", precio: 1300000, emoji: "🚀",
+      veredicto: "Marca lista pa' despegar 🚀",
+      pitch: "La base ya está. Ahora toca meterle pauta con cabeza para que los likes se vuelvan ventas y no puro aplauso."
+    },
+    branding: {
+      nombre: "Branding", precio: 1000000, emoji: "🎨",
+      veredicto: "Marca sin personalidad 🎭",
+      pitch: "Antes de gritar, hay que saber quién eres. Logo, colores y voz propia para que nadie te confunda con el de al lado."
+    }
+  };
+  var ORDEN = ["redes", "audiovisual", "campanas", "branding"];
+
+  // Cada opción suma puntos (p) a uno o varios servicios. La pregunta 8 define el presupuesto (tope).
+  var PREGUNTAS = [
+    { t: "¿En qué etapa está tu marca?", a: "Sé sincero, aquí nadie juzga (bueno, un poquito).", o: [
+      { t: "Apenas está naciendo", p: { branding: 3, redes: 1 } },
+      { t: "Ya vendo, pero casi nadie me conoce", p: { redes: 2, campanas: 1 } },
+      { t: "Tengo clientes y quiero crecer", p: { campanas: 2, audiovisual: 1 } },
+      { t: "Llevo años y me toca renovarme", p: { branding: 3, audiovisual: 1 } } ] },
+    { t: "¿Tu marca tiene logo, colores y tipografía definidos?", a: "Lo que la gente ve antes de comprarte.", o: [
+      { t: "No, nada de eso", p: { branding: 3 } },
+      { t: "Tengo un logo que me hizo un primo", p: { branding: 2 } },
+      { t: "Sí, pero cada publicación sale de un color distinto", p: { branding: 1, redes: 1 } },
+      { t: "Sí, todo bien definido y aplicado", p: { redes: 1, campanas: 1 } } ] },
+    { t: "¿Cómo están tus redes hoy?", a: "Instagram, TikTok, Facebook… las que tengas.", o: [
+      { t: "Abandonadas o ni existen", p: { redes: 3 } },
+      { t: "Publico cuando me acuerdo", p: { redes: 3 } },
+      { t: "Publico seguido, pero nadie interactúa", p: { audiovisual: 2, redes: 1 } },
+      { t: "Activas y creciendo", p: { campanas: 2, audiovisual: 1 } } ] },
+    { t: "¿Cómo se ve lo que publicas?", a: "La primera impresión entra por los ojos.", o: [
+      { t: "Fotos de celular y flyers de plantilla", p: { audiovisual: 3 } },
+      { t: "Casi no publico contenido propio", p: { redes: 2, audiovisual: 1 } },
+      { t: "Hago videos, pero se ven caseros", p: { audiovisual: 3 } },
+      { t: "Se ve profesional", p: { campanas: 2 } } ] },
+    { t: "¿Qué quieres lograr en los próximos 3 meses?", a: "Escoge la que más te quite el sueño.", o: [
+      { t: "Que en Barranca sepan que existo", p: { redes: 2, audiovisual: 1 } },
+      { t: "Vender más, ya", p: { campanas: 3 } },
+      { t: "Lanzar un producto o abrir un local", p: { campanas: 2, audiovisual: 2 } },
+      { t: "Verme más profesional que la competencia", p: { branding: 2, audiovisual: 1 } } ] },
+    { t: "¿Has invertido en publicidad pagada?", a: "Meta Ads, TikTok Ads, Google… lo que sea.", o: [
+      { t: "Nunca", p: { redes: 1, campanas: 1 } },
+      { t: "Le di a «Promocionar» y crucé los dedos", p: { campanas: 3 } },
+      { t: "Sí, con resultados regulares", p: { campanas: 2, audiovisual: 1 } },
+      { t: "Sí, y me va bien", p: { audiovisual: 2, redes: 1 } } ] },
+    { t: "¿Quién maneja tus redes hoy?", a: "La verdad, nada más que la verdad.", o: [
+      { t: "Yo, cuando me sobra tiempo (o sea, nunca)", p: { redes: 3 } },
+      { t: "Un familiar o amigo que «sabe de eso»", p: { redes: 2, branding: 1 } },
+      { t: "Alguien del equipo, pero le falta creatividad", p: { audiovisual: 2, campanas: 1 } },
+      { t: "Una persona o agencia con estrategia", p: { campanas: 2, audiovisual: 1 } } ] },
+    { t: "¿Cuánto puedes invertir en tu marca?", a: "Con esto armamos una propuesta que sí puedas pagar.", o: [
+      { t: "Menos de $ 1.000.000", p: {}, tope: 1000000 },
+      { t: "Entre $ 1.000.000 y $ 2.000.000", p: {}, tope: 2000000 },
+      { t: "Entre $ 2.000.000 y $ 3.500.000", p: {}, tope: 3500000 },
+      { t: "Más de $ 3.500.000", p: {}, tope: Infinity } ] }
+  ];
+  var IDX_OBJETIVO = 4, IDX_PRESUPUESTO = 7, LETRAS = ["A", "B", "C", "D"];
+
+  /* ===== ESTADO (solo en memoria, no se guarda nada) ===== */
+  var respuestas = [], actual = 0, ranking = [], recomendados = [], seleccion = {}, tope = Infinity;
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  // Formato colombiano: $ 1.500.000
+  function cop(valor) {
+    return "$ " + Math.round(valor).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  function mostrar(id) {
+    ["inicio", "quiz", "resultado"].forEach(function (s) { $(s).hidden = s !== id; });
+    window.scrollTo(0, 0);
+  }
+
+  /* ===== PORTADA ===== */
+  ORDEN.forEach(function (k) {
+    var s = SERVICIOS[k], d = document.createElement("div");
+    d.className = "servicio";
+    d.innerHTML = '<div class="emo">' + s.emoji + "</div><p>" + s.nombre + "</p><span>" + cop(s.precio) + "</span>";
+    $("listaServicios").appendChild(d);
+  });
+
+  $("btnEmpezar").addEventListener("click", function () {
+    respuestas = PREGUNTAS.map(function () { return null; });
+    actual = 0;
+    mostrar("quiz");
+    pintarPregunta();
+  });
+
+  /* ===== PREGUNTAS ===== */
+  function pintarPregunta() {
+    var q = PREGUNTAS[actual];
+    $("contador").textContent = (actual + 1) + "/" + PREGUNTAS.length;
+    $("barra").style.width = ((actual + 1) / PREGUNTAS.length * 100) + "%";
+    $("pregunta").textContent = q.t;
+    $("ayuda").textContent = q.a;
+    $("btnAtras").textContent = actual === 0 ? "← Volver al inicio" : "← Atrás";
+
+    var cont = $("opciones");
+    cont.innerHTML = "";
+    q.o.forEach(function (op, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "opcion" + (respuestas[actual] === i ? " elegida" : "");
+      b.innerHTML = "<b>" + LETRAS[i] + "</b><span></span>";
+      b.querySelector("span").textContent = op.t;
+      b.addEventListener("click", function () { elegir(i, b); });
+      cont.appendChild(b);
+    });
+    $("pregunta").focus({ preventScroll: true });
+  }
+
+  var bloqueado = false;
+  function elegir(i, boton) {
+    if (bloqueado) return;
+    bloqueado = true;
+    respuestas[actual] = i;
+    Array.prototype.forEach.call($("opciones").children, function (el) { el.classList.remove("elegida"); });
+    boton.classList.add("elegida");
+    setTimeout(function () {
+      bloqueado = false;
+      if (actual < PREGUNTAS.length - 1) { actual++; pintarPregunta(); }
+      else { calcular(); }
+    }, 220);
+  }
+
+  $("btnAtras").addEventListener("click", function () {
+    if (actual === 0) { mostrar("inicio"); return; }
+    actual--;
+    pintarPregunta();
+  });
+
+  /* ===== DIAGNÓSTICO ===== */
+  function calcular() {
+    var puntos = { redes: 0, audiovisual: 0, campanas: 0, branding: 0 };
+    respuestas.forEach(function (r, qi) {
+      var p = PREGUNTAS[qi].o[r].p;
+      for (var k in p) { puntos[k] += p[k]; }
+    });
+    tope = PREGUNTAS[IDX_PRESUPUESTO].o[respuestas[IDX_PRESUPUESTO]].tope;
+
+    // Ordena de mayor a menor urgencia (en empate respeta ORDEN)
+    ranking = ORDEN.slice().sort(function (a, b) {
+      return (puntos[b] - puntos[a]) || (ORDEN.indexOf(a) - ORDEN.indexOf(b));
+    });
+    var max = puntos[ranking[0]] || 1;
+
+    // Recomienda el servicio principal y suma los demás relevantes que quepan en el presupuesto
+    recomendados = [ranking[0]];
+    var suma = SERVICIOS[ranking[0]].precio;
+    ranking.slice(1).forEach(function (k) {
+      if (puntos[k] / max >= 0.4 && suma + SERVICIOS[k].precio <= tope) {
+        recomendados.push(k);
+        suma += SERVICIOS[k].precio;
+      }
+    });
+    seleccion = {};
+    recomendados.forEach(function (k) { seleccion[k] = true; });
+
+    pintarResultado(puntos, max);
+  }
+
+  function pintarResultado(puntos, max) {
+    var top = SERVICIOS[ranking[0]];
+    var negocio = $("negocio").value.trim();
+    $("resSaludo").textContent = negocio ? "Diagnóstico de " + negocio : "Tu diagnóstico";
+    $("resVeredicto").textContent = top.veredicto;
+    $("resNecesita").textContent = "Lo que más necesitas: " + top.nombre;
+    $("resPitch").textContent = top.pitch;
+
+    // Medidor de urgencia
+    var med = $("medidor");
+    med.innerHTML = "";
+    ranking.forEach(function (k) {
+      var s = SERVICIOS[k], pct = Math.round(puntos[k] / max * 100), f = document.createElement("div");
+      f.className = "fila-medidor";
+      f.innerHTML = "<div><span>" + s.emoji + " " + s.nombre + "</span><span>" + pct + "%</span></div>" +
+        '<div class="barra"><span style="width:' + pct + '%"></span></div>';
+      med.appendChild(f);
+    });
+
+    // Cotización editable
+    var cot = $("cotizacion");
+    cot.innerHTML = "";
+    ranking.forEach(function (k) {
+      var s = SERVICIOS[k], lab = document.createElement("label");
+      lab.className = "item" + (seleccion[k] ? " activo" : "");
+      lab.innerHTML = '<input type="checkbox"' + (seleccion[k] ? " checked" : "") + '>' +
+        '<span class="nombre">' + s.emoji + " " + s.nombre +
+        (recomendados.indexOf(k) > -1 ? '<br><span class="tag">Recomendado</span>' : "") + "</span>" +
+        '<span class="precio">' + cop(s.precio) + "</span>";
+      lab.querySelector("input").addEventListener("change", function (e) {
+        seleccion[k] = e.target.checked;
+        lab.classList.toggle("activo", e.target.checked);
+        actualizarTotal();
+      });
+      cot.appendChild(lab);
+    });
+
+    actualizarTotal();
+    mostrar("resultado");
+    $("resVeredicto").focus({ preventScroll: true });
+  }
+
+  /* ===== TOTAL Y WHATSAPP ===== */
+  function elegidos() { return ranking.filter(function (k) { return seleccion[k]; }); }
+
+  function actualizarTotal() {
+    var lista = elegidos();
+    var total = lista.reduce(function (acc, k) { return acc + SERVICIOS[k].precio; }, 0);
+    $("total").textContent = cop(total);
+    $("alerta").hidden = !(total > tope);
+
+    var wa = $("btnWA");
+    if (!lista.length) {
+      wa.classList.add("apagado");
+      wa.setAttribute("aria-disabled", "true");
+      wa.href = "#";
+      return;
+    }
+    wa.classList.remove("apagado");
+    wa.removeAttribute("aria-disabled");
+    wa.href = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensaje(lista, total));
+  }
+
+  function mensaje(lista, total) {
+    var negocio = $("negocio").value.trim();
+    var l = ["¡Hola, ALBOROTO! 💥 Acabo de hacer el diagnóstico exprés de marca."];
+    if (negocio) l.push("Negocio: " + negocio);
+    l.push("Diagnóstico: " + SERVICIOS[ranking[0]].veredicto);
+    l.push("Objetivo: " + PREGUNTAS[IDX_OBJETIVO].o[respuestas[IDX_OBJETIVO]].t);
+    l.push("Presupuesto: " + PREGUNTAS[IDX_PRESUPUESTO].o[respuestas[IDX_PRESUPUESTO]].t);
+    l.push("", "Quiero cotizar:");
+    lista.forEach(function (k) { l.push("• " + SERVICIOS[k].nombre + ": " + cop(SERVICIOS[k].precio)); });
+    l.push("", "Total: " + cop(total), "", "¿Cuándo armamos el alboroto? 🔥");
+    return l.join("\n");
+  }
+
+  $("btnReiniciar").addEventListener("click", function () {
+    respuestas = []; actual = 0; seleccion = {};
+    $("negocio").value = "";
+    mostrar("inicio");
+  });
+})();
+</script>
+</body>
+</html>
